@@ -1,6 +1,6 @@
 # M3U8Kit
 
-M3U8Kit is a light-weight m3u8 parser framework, code in Objective-C
+M3U8Kit is a light-weight m3u8 parser framework, code in Objective-C.
 M3U8Kit 是使用Objective-C编写的一套轻量级m3u8解析框架.
 
 ## Usage 使用方法
