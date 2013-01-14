@@ -20,6 +20,7 @@ M3U8SegmentInfoList *m3u8 = [M3U8Parser m3u8SegmentInfoListFromData:m3u8Data];
 ## Support Tags 支持的Tag
 * #EXTM3U
 * #EXTINF
+
 ## Reference link 参考链接
 ### HTTP Live Streaming  
 http://tools.ietf.org/html/draft-pantos-http-live-streaming-00
