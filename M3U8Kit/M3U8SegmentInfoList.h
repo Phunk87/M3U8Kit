@@ -10,6 +10,11 @@
 
 @class M3U8SegmentInfo;
 @interface M3U8SegmentInfoList : NSObject
+<
+NSCopying
+>
+
+@property (nonatomic, assign ,readonly) NSUInteger count;
 
 - (void)addSegementInfo:(M3U8SegmentInfo *)segment;
 - (M3U8SegmentInfo *)segmentInfoAtIndex:(NSUInteger)index;

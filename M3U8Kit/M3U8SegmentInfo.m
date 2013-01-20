@@ -33,8 +33,20 @@ NSString *keyM3U8SegmentMediaURLString = @"key.M3U8SegmentMediaURLString";
     [super dealloc];
 }
 
+- (NSDictionary *)dictionaryValue {
+    NSDictionary *dictionay = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithDouble:self.duration], keyM3U8SegmentDuration,
+                               _mediaURL == nil ? [NSNull null] : self.mediaURL, keyM3U8SegmentMediaURLString, nil];
+    return dictionay;
+}
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"SegmentInfo:<duration: %f>, <url:%@>", self.duration, self.mediaURL.absoluteString];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    M3U8SegmentInfo *copy = [[M3U8SegmentInfo alloc] initWithDictionary:[self dictionaryValue]];
+    return copy;
 }
 
 @end

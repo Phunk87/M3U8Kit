@@ -18,10 +18,14 @@ extern NSString *keyM3U8SegmentMediaURLString;
  */
 
 @interface M3U8SegmentInfo : NSObject
+<
+NSCopying
+>
 
 @property (nonatomic, readonly) CGFloat duration;
 @property (nonatomic, readonly, copy) NSURL   *mediaURL;
 
 - (id)initWithDictionary:(NSDictionary *)params;
+- (NSDictionary *)dictionaryValue;
 
 @end
