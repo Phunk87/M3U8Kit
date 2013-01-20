@@ -36,7 +36,8 @@ NSString *keyM3U8SegmentMediaURLString = @"key.M3U8SegmentMediaURLString";
 - (NSDictionary *)dictionaryValue {
     NSDictionary *dictionay = [NSDictionary dictionaryWithObjectsAndKeys:
                                [NSNumber numberWithDouble:self.duration], keyM3U8SegmentDuration,
-                               _mediaURL == nil ? [NSNull null] : self.mediaURL, keyM3U8SegmentMediaURLString, nil];
+                               (_mediaURL == nil || (_mediaURL.absoluteString && _mediaURL.absoluteString.length)) ?
+                               [NSNull null] : _mediaURL.absoluteString, keyM3U8SegmentMediaURLString, nil];
     return dictionay;
 }
 

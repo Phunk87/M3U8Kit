@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "M3U8SegmentInfo.h"
 
-@class M3U8SegmentInfo;
 @interface M3U8SegmentInfoList : NSObject
 <
 NSCopying
