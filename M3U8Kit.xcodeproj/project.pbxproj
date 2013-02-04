@@ -282,6 +282,7 @@
 				768566FF16A4397100AB5011 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
