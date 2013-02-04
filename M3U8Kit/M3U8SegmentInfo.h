@@ -19,7 +19,8 @@ extern NSString *keyM3U8SegmentMediaURLString;
 
 @interface M3U8SegmentInfo : NSObject
 <
-NSCopying
+NSCopying,
+NSCoding
 >
 
 @property (nonatomic, readonly) CGFloat duration;

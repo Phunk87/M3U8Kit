@@ -8,6 +8,8 @@
 
 #import "M3U8SegmentInfoList.h"
 
+#define KeySegmentInfList       @"key.segmentList"
+
 @implementation M3U8SegmentInfoList {
 @private
     NSMutableArray  *_segmentInfoList;
@@ -22,27 +24,42 @@
     return self;
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-    M3U8SegmentInfoList *copy = [[M3U8SegmentInfoList alloc] init];
-    
-    for (int i = 0; i < [self count]; i++) {
-        [copy addSegementInfo:[[self segmentInfoAtIndex:i] copy]];
-    }
-    
-    return copy;
-}
-
 - (void)dealloc {
     [_segmentInfoList release];
     [super dealloc];
 }
 
-#pragma mark - getter && setter
+#pragma mark - NSCopyding
+- (id)copyWithZone:(NSZone *)zone {
+    M3U8SegmentInfoList *copy = [[[self class] allocWithZone:zone] init];
+    
+    for (int i = 0; i < [self count]; i++) {
+        [copy addSegementInfo:[[self segmentInfoAtIndex:i] copyWithZone:zone]];
+    }
+    
+    return copy;
+}
+
+#pragma mark - NSCoding
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_segmentInfoList forKey:KeySegmentInfList];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        _segmentInfoList = [[aDecoder decodeObjectForKey:KeySegmentInfList] retain];
+    }
+    
+    return self;
+}
+
+#pragma mark - Getter && Setter
 - (NSUInteger)count {
     return [_segmentInfoList count];
 }
 
-#pragma mark - public
+#pragma mark - Public
 - (void)addSegementInfo:(M3U8SegmentInfo *)segment {
     [_segmentInfoList addObject:segment];
 }
@@ -53,6 +70,26 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"%@", _segmentInfoList];
+}
+
+- (NSString *)originalM3U8PlanStringValue {
+    NSMutableString *m3u8String = [[NSMutableString alloc] init];
+    
+    [m3u8String appendString:@"#EXTM3U\n"];
+    [m3u8String appendString:@"#EXT-X-TARGETDURATION:32\n"];
+    [m3u8String appendString:@"#EXT-X-VERSION:3\n"];
+    [m3u8String appendString:@"#EXT-X-DISCONTINUITY\n"];
+    
+    for (M3U8SegmentInfo *segmentInfo in _segmentInfoList) {
+        [m3u8String appendString:[NSString stringWithFormat:@"#EXTINF:%.2f,\n", segmentInfo.duration]];
+        [m3u8String appendString:[NSString stringWithFormat:@"%@\n", segmentInfo.mediaURL.absoluteString]];
+    }
+    [m3u8String appendString:@"#EXT-X-ENDLIST\n"];
+    
+    NSString *returnString = [[m3u8String copy] autorelease];
+    [m3u8String release];
+    
+    return returnString;
 }
 
 @end
