@@ -27,7 +27,7 @@ http://tools.ietf.org/html/draft-pantos-http-live-streaming-00
 
 ## Donate 捐赠
 
-You can donate me
+You can donate me 您可以支持我
 via:
 * [Alipay | 支付宝](https://me.alipay.com/0dayzh)
 
