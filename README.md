@@ -12,8 +12,10 @@ NSString *planString = [m3u8LocationURL m3u8PlanString];
 
 ### Parse m3u8 from plan string or data 从明文或者data中解析m3u8
 ```
+// via NSString
 M3U8SegmentInfoList *m3u8 = [M3U8Parser m3u8SegmentInfoListFromPlanString:m3u8PlanString];
 
+// via NSData
 M3U8SegmentInfoList *m3u8 = [M3U8Parser m3u8SegmentInfoListFromData:m3u8Data];
 ```
 
