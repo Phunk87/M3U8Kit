@@ -19,7 +19,7 @@ M3U8SegmentInfoList *m3u8 = [M3U8Parser m3u8SegmentInfoListFromPlanString:m3u8Pl
 M3U8SegmentInfoList *m3u8 = [M3U8Parser m3u8SegmentInfoListFromData:m3u8Data];
 ```
 
-## Support Tags 支持的Tags
+## Supported Tags 支持的Tags
 * #EXTM3U
 * #EXTINF
 
@@ -32,6 +32,7 @@ http://tools.ietf.org/html/draft-pantos-http-live-streaming-00
 You can donate me 您可以支持我
 via:
 * [Alipay | 支付宝](https://me.alipay.com/0dayzh)
+* Bitcoin: 1DK98CTQ3hXb2j3VD7Tbz4v16ytZJhtPWv
 
 ## License 许可协议
 This code is distributed under the terms of the GNU General Public License.  
